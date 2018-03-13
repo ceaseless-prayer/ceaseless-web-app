@@ -1,0 +1,115 @@
+/* Home
+-------------------------------------------------- */
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header (overwrites bootstrap's navbar-default */
+.header {
+  background-color: white;
+  border-color: white;
+  margin-bottom: 0px;
+}
+
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+
+  img {
+    height: 40px;
+  }
+}
+
+
+/* Custom background image */
+.scape-background {
+  background-image: url(../home/images/palouse_falls_landscape.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    /* Optional for fixed width layout */
+    max-width: 960px;
+  }
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+
+  .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+  }
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 20px 0px;
+
+  p + h4 {
+    margin-top: 28px;
+  }
+}
+
+/* Sign up form */
+.signup-details {
+  border-radius: 5px;
+  background-color: rgba(34,34,34,.65);
+  color: white;
+  padding: 5px;
+}
+.signup-form input[type=text],
+.signup-form input[type=password],
+.signup-form input[type=email] {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
+
+.signup-form .help-block {
+  padding:3px;
+  font-size: 13px;
+  border-radius: 4px;
+  line-height: 1.2;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 0px;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+

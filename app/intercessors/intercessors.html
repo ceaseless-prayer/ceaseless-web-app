@@ -1,0 +1,13 @@
+<div>
+  <div class="cl-action-menu">
+    <button type="button" class="btn btn-primary" ng-click="openAddIntercessorForm()" translate>add intercessor</button>
+  </div>
+  <div ng-show="intercessors.length === 0">
+    <span class="instruction-on-empty"><i class="fa fa-angle-double-up"></i> Add an intercessor.</span>
+  </div>
+  <ul>
+    <li ng-repeat="intercessor in intercessors" class="card">
+    <div ng-include="'intercessors/intercessor.html'"></div>
+    </li>
+  </ul>
+</div>

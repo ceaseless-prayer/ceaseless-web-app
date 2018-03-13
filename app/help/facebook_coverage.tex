@@ -1,0 +1,42 @@
+% Use http://arachnoid.com/latex/ to render this
+% This initial math provides an estimate of how many people we need use Ceaseless to get prayer coverage of Facebook.
+
+\text{Let}\\
+C = \text{Ceaseless users and }\\
+F = \text{Facebook users} \\
+
+\text{Assume each additional Ceaseless user has}\ \alpha\ \text{friends, which are "randomly" distributed} \\
+
+\text{And that } C \subset F \\
+
+|F| = N \\
+|C| = n \\
+
+\text{For a node x, the probability}\ P\text{ that there are no friends of } x\ \text{in}\ C\ \text{is:} \\
+P = (1-n/N)^\alpha = (1-n/N)^{N(\alpha/N)} \\
+\text{for}\ N >> 0, \\
+P \approx e^{-\alpha n / N} \text{ because } (1+x/N)^N \rightarrow e^x \text{ as } N \rightarrow \infty \\
+1-P = \text{probability } x \text{ has a friend in } C \\
+E(\text{nodes with a friend in }C) = NC(-P) = N(1-e^{-\alpha n/N}) \\
+E(n) = N(1-e^{-\alpha n/N}) \\
+\text{for each user added to C, the expected prayer coverage gain of Facebook is:} \\
+E'(n) = \alpha e^{-\alpha n/N} \\
+N(1-e^{-\alpha n/N}) = N-1/2 \\
+an/N = ln(2N) \\
+1-e^{-\alpha n/N} = 1-\frac{1}{2N} \\
+e^{-\alpha n/N} = \frac{1}{2N} \\
+n = \frac{N}{\alpha} ln(2N) \\
+\text{How many users are needed to get } r \text{ coverage of } F \text{?} \\
+N(1-e^{-\alpha n/N}) = rN \\
+1-e^{-\alpha n/N} = r \\
+e^{-\alpha n/N} = 1-r \\
+-\alpha n/N = ln(1-r) \\
+n = \frac{N}{\alpha}ln(1-r)^{-1} \\
+n = \frac{N}{\alpha} ln(\frac{1}{1-r}) \\
+\text{With these assumptions, we can estimate how many people} \\
+\text{need to use Ceaseless to cover Facebook users in personal prayer.} \\
+\text{Let } N = 1.3\ billion \text{ Facebook users and } \alpha = 130 \text{ friends per user on average. } \\
+\text{Then to have 99% coverage of F we need to have:} \\
+n = \frac{1.3e9}{130} ln(\frac{1}{1-.99}) = 4.605e7 \approx 47\ million \\
+\text{To have 90% coverage of F we need to have:} \\
+n = \frac{1.3e9}{130} ln(\frac{1}{1-.90}) = 2.303e7 \approx 24\ million \\

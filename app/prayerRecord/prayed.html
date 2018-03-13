@@ -1,0 +1,32 @@
+<div>
+  <div class="container">
+    <div class="row" ng-show="sender">
+      <h2 class="lead">
+        <p><i class="fa fa-check-circle-o"></i> Thanks for praying!</p>
+      </h2>
+      <p>Leave a message to the people you prayed for:</p>
+      <section class="feed">
+        <div ng-repeat="author in authors" class="clearfix">
+          <div class="text-center">
+            <img class="profile-picture img-rounded" ng-src="{{ author | profilePicture }}"/>
+            <header>{{author.name}} ({{author.firstName + " " + author.lastName}})</header>
+          </div>
+          <form role="form" ng-hide="messageSaved" ng-submit="saveMessage(author, message)">
+            <div class="input-group">
+              <input type="text" placeholder="Leave a message" class="form-control" ng-model="message">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit">Submit</button>
+              </span>
+            </div>
+          </form>
+          <p ng-show="messageSaved">Message saved!</p>
+        </div>
+      </section>
+    </div>
+    <div class="row" ng-hide="sender">
+      <h2 class="lead">
+        Sorry, it looks like you reached this page accidentally. There is nothing to do here.
+      </h2>
+    </div>
+  </div>
+</div>

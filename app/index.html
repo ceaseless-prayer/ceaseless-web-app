@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title>Ceaseless Lite</title>
+    <meta name="description" content="Ceaseless helps people remember to pray">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/styles.css-->
+    <link rel="stylesheet" href="compiled.css" />
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="container">
+      <div ng-include="'header/header.html'"></div>
+      <div ng-view=""></div>
+      <div ng-include="'footer/footer.html'"></div>
+    </div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/lodash/dist/lodash.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-translate/angular-translate.js"></script>
+    <script src="bower_components/angular-translate-storage-cookie/angular-translate-storage-cookie.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-http-auth/src/http-auth-interceptor.js"></script>
+    <script src="bower_components/momentjs/moment.js"></script>
+    <script src="bower_components/spin.js/spin.js"></script>
+    <script src="bower_components/angular-spinner/angular-spinner.js"></script>
+    <script src="bower_components/webcam-directive/dist/1.1.0/webcam.min.js"></script>
+    <script src="bower_components/blueimp-load-image/js/load-image.min.js"></script>
+    <script src="bower_components/blueimp-load-image/js/load-image-exif.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="bootstrap.js"></script>
+    <script src="index.js"></script>
+    <script src="header/navMenuDirective.js"></script>
+    <script src="home/HomeCtrl.js"></script>
+    <script src="home/alertsDirective.js"></script>
+    <script src="user/UserModel.js"></script>
+    <script src="user/LoginCtrl.js"></script>
+    <script src="user/UserService.js"></script>
+    <script src="members/Filters.js"></script>
+    <script src="members/WebcamService.js"></script>
+    <script src="members/MembersCtrl.js"></script>
+    <script src="members/MemberModel.js"></script>
+    <script src="members/AddMemberCtrl.js"></script>
+    <script src="members/BulkUploadMembersCtrl.js"></script>
+    <script src="members/ImportSubscribersCtrl.js"></script>
+    <script src="members/MemberDetailCtrl.js"></script>
+    <script src="intercessors/IntercessorsCtrl.js"></script>
+    <script src="intercessors/IntercessorModel.js"></script>
+    <script src="intercessors/AddIntercessorCtrl.js"></script>
+    <script src="intercessors/IntercessorDetailCtrl.js"></script>
+    <script src="configuration/configuration.js"></script>
+    <script src="configuration/ConfigurationCtrl.js"></script>
+    <script src="configuration/ConfigurationModel.js"></script>
+    <script src="notes/NoteModel.js"></script>
+    <script src="notes/MessageModel.js"></script>
+    <script src="prayerRecord/PrayerRecordModel.js"></script>
+    <script src="prayerRecord/PrayerUpdateModel.js"></script>
+    <script src="prayerRecord/PrayerService.js"></script>
+    <script src="prayerRecord/PrayedCtrl.js"></script>
+    <script src="help/HelpCtrl.js"></script>
+    <script src="daily/DailyCtrl.js"></script>
+    <script src="scripture/ScriptureService.js"></script>
+    <script src="localization/i18n.js"></script>
+    <script src="localization/LanguageListCtrl.js"></script>
+    <script src="localization/TranslationConfig.js"></script>
+    <script src="filters/moment.js"></script>
+    <script src="profile/SelfProfileCtrl.js"></script>
+    <script src="profile/SubscribeCtrl.js"></script>
+    <script src="profile/SubscriberModel.js"></script>
+    <script src="profile/SubscribersCtrl.js"></script>
+    <script src="profile/SettingsCtrl.js"></script>
+    <script src="profile/MessagesCtrl.js"></script>
+    <script src="profile/CreateMessageCtrl.js"></script>
+    <!-- endbuild -->
+
+  </body>
+</html>

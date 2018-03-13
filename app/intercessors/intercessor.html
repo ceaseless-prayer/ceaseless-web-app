@@ -1,0 +1,26 @@
+<div>
+  <img class="pull-left thumbnail" ng-src='{{ intercessor.profilePicture | profilePicture }}'/>
+  <div>
+    <span>{{intercessor.firstName + ' ' +intercessor.lastName}}</span>
+  </div>
+  <div>{{intercessor.description}}</div>
+  <div class="btn-group">
+    <a ng-show="intercessor.email" class="btn btn-default" role="button" href="mailto:{{intercessor.email}}">
+      <i class="fa fa-envelope-o fa-lg"></i>
+    </a>
+    <button class="btn btn-default" role="button" popover-placement="bottom" popover="{{intercessor.phone || 'No phone'}}">
+      <i class="fa fa-mobile fa-lg"></i>
+    </button>
+    <button class="btn btn-default" role="button" ng-click="changeActivation(intercessor)">
+      <span ng-show="intercessor.active">
+        Deactivate
+      </span>
+      <span ng-hide="intercessor.active">
+        Activate
+      </span>
+    </button>
+    <button ng-click="clickEffect(intercessor)" class="btn btn-default" role="button">
+      <span translate>details</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+<div>
+  <div class="cl-action-menu navbar">
+    <button type="button" class="navbar-btn btn btn-primary" ng-click="openAddMemberForm()" translate>add member</button>
+    <button type="button" class="navbar-btn btn btn-primary" ng-click="openBulkUploadMembersForm()" translate>bulk upload members</button>
+    <button type="button" class="navbar-btn btn btn-primary" ng-click="openImportSubscribersForm()">Import from Subscribers</button>
+    <form class="navbar-form navbar-right" role="search">
+      <input type="text" class="form-control" placeholder="Search">
+      <button type="submit" class="navbar-btn btn btn-default">Search</button>
+    </form>
+  </div>
+  <div ng-show="members.length === 0">
+    <span class="instruction-on-empty"><i class="fa fa-angle-double-up"></i> Add a member.</span>
+  </div>
+  <ul>
+    <li ng-repeat="member in members track by member.id" class="card">
+      <div>
+        <img class="pull-left thumbnail profile-picture" ng-src='{{ member | profilePicture }}'/>
+        <div>
+          <p>{{member.firstName + ' ' +member.lastName}}</p>
+
+          <p ng-show="member.lastPrayedFor" class="small">Last prayed for {{member.lastPrayedFor | fromNow}}.</p>
+
+          <p ng-show="!member.lastPrayedFor" class="small">Not prayed for yet.</p>
+
+          <p class="small">{{member.lastNote || "No notes yet."}}</p>
+
+          <div class="btn-group">
+            <a ng-show="member.email" class="btn btn-default" role="button" href="mailto:{{member.email}}">
+              <i class="fa fa-envelope-o fa-lg"></i>
+            </a>
+
+            <button class="btn btn-default" role="button" popover-placement="bottom" popover="{{member.phone || 'No phone'}}">
+              <i class="fa fa-mobile fa-lg"></i>
+            </button>
+
+            <button class="btn btn-default" role="button" popover-placement="bottom" popover="{{member.address || 'No address'}}">
+              <i class="fa fa-home fa-lg"></i>
+            </button>
+
+            <a ng-show="member.facebook" class="btn btn-default" role="button" href="{{member.facebook}}">
+              <i class="fa fa-facebook fa-lg"></i>
+            </a>
+
+            <button ng-show="member.invited.length === 0" class="btn btn-default" role="button">
+              <i class="fa fa-plus"></i>
+              <span translate>invite</span>
+            </button>
+
+            <button class="btn"
+                    ng-class="{'btn-success': member.justPrayedFor, 'btn-default': !member.justPrayedFor}"
+                    role="button"
+                    ng-click="prayed(member); member.justPrayedFor = true"
+                    ng-disabled='member.justPrayedFor'>
+              <i class="fa fa-fire"></i>
+              <span translate>prayed</span>
+            </button>
+
+            <button ng-click="clickEffect(member)" class="btn btn-default" role="button">
+              <span translate>details</span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+    </li>
+  </ul>
+</div>

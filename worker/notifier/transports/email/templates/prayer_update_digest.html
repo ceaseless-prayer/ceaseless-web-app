@@ -1,0 +1,43 @@
+<template name="digest_notification_email">
+<div style="font-family: arial,helvetica,sans-serif">
+	<img src="http://www.ceaselessprayer.com/assets/img/ceaseless.png"/>
+
+	<hr style="background-color:#ccc; border:0; height: 1px; margin-bottom:1.625em"/>
+  <div style="background-image:url(https://theseedcompany.org/sites/default/files/projects/covers/newamericacoverimage_12.jpg);width:100%;">
+	  <h3>{{title}}</h3>
+  </div>
+	<table style="width:100%; border-collapse:collapse">
+		{{#each updates}}
+			<tr>
+        <th style="text-align:left; border-top: 1px solid #ccc; margin-top: 3px; font-size:1.7em" colspan="2">
+          {{this.author.name}}
+        </th>
+      </tr>
+			<tr>
+				<td style="vertical-align:top; width:100px">
+          {{#if this.author.profilePicture}}
+					  <img src="{{this.author.profilePicture}}" style="vertical-align:top; min-width:30px; margin: 3px;"/>
+          {{else}}
+            <img src="http://www.ceaselessprayer.com/assets/img/default_profile_pic.jpg" style="vertical-align:top; min-width:30px; margin: 3px;"/>
+          {{/if}}
+
+				</td>
+				<td style="max-width:470px; vertical-align:top">
+					<ul style="margin:0; padding-left: 2em">
+            {{#each this.updatesForAuthor}}
+              <li>{{this.content}}</li>
+            {{else}}
+              <li>Sorry, no updates are available.</li>
+            {{/each}}
+					</ul>
+				</td>
+			</tr>
+		{{/each}}
+		<tr>
+			<td colspan='2' style='border-top: 1px solid #ccc; margin-bottom: 5px'>
+        <a href='http://www.ceaselessprayer.com/invite.html'>Invite others</a>
+			</td>
+		</tr>
+	</table>
+</div>
+</template>

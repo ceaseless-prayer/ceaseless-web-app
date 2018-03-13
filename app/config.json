@@ -1,0 +1,17 @@
+{
+  "integ": {
+    "apiEndpoint": "http://localhost:3000/api/",
+    "authenticate" : "http://localhost:3000/api/authenticate",
+    "logout" : "http://localhost:3000/api/logout",
+    "forgotPassword" : "http://localhost:3000/api/forgotPassword",
+    "dbtApiKey" : "fd82d19821647fa4829c7ca160b82e6f"
+  },
+  "local": {
+    "apiEndpoint": "http://localhost:3000/api/",
+    "authenticate" : "http://localhost:3000/api/authenticate",
+    "logout" : "http://localhost:3000/api/logout",
+    "forgotPassword" : "http://localhost:3000/api/forgotPassword",
+    "dbtApiKey" : "fd82d19821647fa4829c7ca160b82e6f"
+  }
+}
+

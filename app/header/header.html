@@ -1,0 +1,55 @@
+<nav class="navbar navbar-default header" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#ceaseless-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="pull-left" href="#/"><h3><img src="header/images/ceaseless.png" alt="Ceaseless"></h3></a>
+    </div>
+    <div class="collapse navbar-collapse" id="ceaseless-navbar">
+      <ul class="nav nav-pills navbar-right" nav-menu='active'>
+        <li><a ng-href="#/" translate>home</a></li>
+        <li><a ng-href="#/userProfile" ng-show="isAuthenticated()" translate>user profile</a></li>
+        <li><a ng-href="#/members" ng-show="isAuthenticated()" translate>members</a></li>
+        <li><a ng-href="#/intercessors" ng-show="isAuthenticated()" translate>intercessors</a></li>
+        <li><a ng-href="#/configuration" ng-show="isAuthenticated()" translate>configuration</a></li>
+        <li><a ng-href="#/help" translate>help</a></li>
+        <li class="dropdown" ng-controller="LanguageListCtrl">
+          <a class="dropdown-toggle" translate>language</a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="l in languages">
+              <a ng-click="changeLanguage(l.id)">{{l.displayName}}</a>
+            </li>
+          </ul>
+          </a>
+        </li>
+        <li><a class="btn btn-default" ng-show="!isAuthenticated()" ng-click="showLogin()" translate>sign in</a></li>
+        <li><a class="btn btn-default" ng-show="isAuthenticated()" ng-click="logout()" translate>sign out</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!--<ul class="nav nav-pills pull-right" nav-menu='active'>-->
+    <!--<li><a ng-href="#/" translate>home</a></li>-->
+    <!--<li><a ng-href="#/members" ng-show="isAuthenticated()" translate>members</a></li>-->
+    <!--<li><a ng-href="#/intercessors" ng-show="isAuthenticated()" translate>intercessors</a></li>-->
+    <!--<li><a ng-href="#/configuration" ng-show="isAuthenticated()" translate>configuration</a></li>-->
+    <!--<li><a ng-href="#/help" translate>help</a></li>-->
+    <!--<li class="dropdown" ng-controller="LanguageListCtrl">-->
+      <!--<a class="dropdown-toggle">Language</a>-->
+        <!--<ul class="dropdown-menu">-->
+          <!--<li ng-repeat="l in languages">-->
+            <!--<a ng-click="changeLanguage(l.id)">{{l.displayName}}</a>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</a>-->
+    <!--</li>-->
+    <!--<li><a class="btn btn-default" ng-show="!isAuthenticated()" ng-click="showLogin()" translate>sign in</a></li>-->
+    <!--<li><a class="btn btn-default" ng-show="isAuthenticated()" ng-click="logout()" translate>sign out</a></li>-->
+  <!--</ul>-->
+  <!--<h3 class="text-muted"><img src="header/images/ceaseless.png" alt="Ceaseless"></h3>-->
+</nav>

@@ -1,0 +1,80 @@
+<section class="clearfix">
+
+  <section class="sidebar">
+    <img class="img-rounded profile-picture" ng-src='{{ profile | profilePicture }}'/>
+    <header>{{profile.firstName + " " + profile.lastName}}</header>
+    <ul>
+      <li ng-if="isAuthenticated()">
+        <a ng-click="openSettingsDialog()">Settings</a>
+      </li>
+      <li>
+        <a href="">Contact Info</a>
+      </li>
+      <li ng-if="!isAuthenticated()" class="add-friend">
+        <a ng-click="openSubscribeDialog()">+ Subscribe</a>
+      </li>
+      <li ng-if="!isAuthenticated()" class="add-friend">
+        <a ng-click="openMessageDialog()"><i class="fa fa-envelope-o"></i> Message</a>
+      </li>
+      <li ng-if="isAuthenticated()" class="add-friend">
+        <a ng-click="showSubscribersDialog()"><i class="fa fa-list"></i> Followers</a>
+      </li>
+      <li ng-if="isAuthenticated()" class="add-friend">
+        <a ng-click="showMessagesDialog()"><i class="fa fa-envelope-o"></i> Messages</a>
+      </li>
+      <li>&nbsp;</li>
+      <li>
+        <p class="small description">{{profile.description}}</p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="main">
+    <section ng-show="isAuthenticated()" class="prayer-update">
+      <form ng-submit="postUpdate()">
+        <div class="input-group">
+          <input type="text" placeholder="Create prayer update" class="form-control" ng-model="prayerUpdate">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">Submit</button>
+          </span>
+        </div>
+        <div class="input-group photo-input">
+          <input ng-hide="true" type="file" selected-file="statusPicture" capture="camera" accept="image/*" id="statusPicture">
+          <!--  TODO HACK way to just get things working -->
+          <span onclick="$('#statusPicture').click()"><i class="fa fa-camera"></i> Add photo</span>
+        </div>
+      </form>
+    </section>
+    <show-alerts></show-alerts>
+    <section class="feed">
+      <div class="blank-filler" ng-show="feed.length < 1">
+        There are no updates at this time.
+      </div>
+      <div ng-repeat="feedItem in feed">
+        <div class="clearfix">
+          <div class="pull-left content">
+            <img ng-show="feedItem.image" ng-src="{{feedItem.image}}"/>
+            {{ feedItem.content }}
+          </div>
+          <div class="pull-right">
+            {{ feedItem.type }}
+          </div>
+        </div>
+
+        <div class="clearfix">
+          <ul class="pull-left">
+            <li><a ng-show="isAuthenticated()" ng-click="deleteUpdate(feedItem.id)">Delete</a></li>
+            <!--<li><a href="">Edit</a></li>-->
+            <!--<li><a href="">Privacy</a></li>-->
+            <!--<li><a href="">Favorite</a></li>-->
+          </ul>
+
+          <div class="pull-right">
+            {{ feedItem.timestamp | fromNow }}
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+</section>

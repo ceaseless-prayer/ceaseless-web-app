@@ -1,0 +1,37 @@
+<section class="clearfix">
+  <div class="modal-body">
+    <section class="sidebar boxed">
+      <div>
+        You have:<br/>
+        <span class="lead">{{ messages.length }}</span>
+        <br/>messages.
+      </div>
+    </section>
+
+    <section class="main">
+      <section class="feed">
+        <div ng-repeat="message in messages">
+          <div class="clearfix">
+            <div class="pull-left content">
+              <h3>{{ message.subscriber.name }}</h3><h4>{{ message.sender }}</h4>
+              {{ message.content }}
+            </div>
+            <div class="pull-right">
+              <img class="img-rounded profile-picture" ng-src='{{ message.subscriber | profilePicture }}'/>
+              <p class="text-right">{{ message.timestamp | fromNow }}</p>
+            </div>
+          </div>
+          <div class="clearfix">
+            <ul class="pull-left">
+              <li><a ng-click="deleteMessage(message.id)">Delete</a></li>
+              <li><a ng-href="{{'mailto:' + message.sender}}">Reply</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-default" ng-click="close()">Close</button>
+  </div>
+</section>

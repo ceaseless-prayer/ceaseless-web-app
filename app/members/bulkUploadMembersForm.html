@@ -1,0 +1,51 @@
+<div class="modal-header">
+  <h3>Bulk Upload Members</h3>
+</div>
+<form>
+  <div class="modal-body">
+    <div ng-if="!hasParsed">
+      <h4>Column headers</h4>
+      <ul>
+        <li ng-repeat="key in memberKeys">{{key}}</li>
+      </ul>
+    </div>
+    <div ng-if="hasParsed" class="csv-preview">
+      <table class="table table-condensed">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Gender</th>
+          <th>Facebook</th>
+          <th>Profile Picture</th>
+          <th>Address</th>
+        </tr>
+
+        <tr ng-repeat="member in parsedMembers">
+          <td>{{member.firstName}}</td>
+          <td>{{member.lastName}}</td>
+          <td>{{member.email}}</td>
+          <td>{{member.phone}}</td>
+          <td>{{member.gender}}</td>
+          <td>{{member.facebook}}</td>
+          <td>{{member.profilePicture}}</td>
+          <td>{{member.address}}</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="form-group">
+      <label for="fileToUpload">CSV file to upload:</label>
+      <input name="fileToUpload" type="file" selected-file="csvUploading"/>
+      <progressbar ng-show="uploadInProgress" max="max" value="dynamic"><span style="color:black; white-space:nowrap;">{{dynamic}} / {{max}}</span></progressbar>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-primary" ng-disabled="!csvUploading" ng-if="!hasParsed" type="submit" ng-click="parse(csvUploading)">Parse CSV</button>
+    <button class="btn btn-primary" ng-if="hasParsed" type="submit" ng-click="upload()">Upload</button>
+    <button class="btn btn-default" ng-if="!hasParsed" ng-click="close()">Close</button>
+    <button class="btn btn-default" ng-if="hasParsed" ng-click="clear()">Clear</button>
+  </div>
+</form>

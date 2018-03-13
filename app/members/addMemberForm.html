@@ -1,0 +1,77 @@
+<div ng-show="editing" class="modal-header">
+  <span translate>edit member</span>
+  <button type="button" ng-click="close()" class="close" aria-hidden="true">&times;</button>
+</div>
+
+<div ng-show="!editing" class="modal-header">
+  <span translate>add member</span>
+</div>
+
+<form role="form" name="addMemberForm">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="firstName" translate>first name</label>
+      <input type="text" name="firstName" ng-model="editedMember.firstName" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="lastName" translate>last name</label>
+      <input type="text" name="lastName" ng-model="editedMember.lastName" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="email" translate>email</label>
+      <input type="email" name="email" ng-model="editedMember.email" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="phone" translate>phone</label>
+      <input type="text" name="phone" ng-model="editedMember.phone" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="Gender" translate>gender</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" ng-model="editedMember.gender" value="Male"/>Male
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-model="editedMember.gender" value="Female"/>Female
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="facebook" translate>facebook</label>
+      <input class="form-control" type="text" name="facebook" ng-model="editedMember.facebook">
+    </div>
+    <div class="form-group">
+      <label for="profilePicture" translate>profile picture</label>
+
+      <input class="form-control" type="text" name="profilePicture" ng-model="editedMember.profilePicture">
+
+      <section ng-show="hasWebcamPermission">
+        <p>Or</p>
+        <div>
+          <webcam ng-show="!editedMember.profilePictureSnapshot"
+                  on-streaming="onStreamingPermission(video)">
+          </webcam>
+
+          <img ng-src="{{ editedMember.profilePictureSnapshot }}" ng-show="editedMember.profilePictureSnapshot"></img>
+        </div>
+
+        <button class="btn"
+                ng-show="!editedMember.profilePictureSnapshot"
+                ng-click="takeSnapshot()">Take Picture</button>
+
+        <button class="btn"
+                ng-show="editedMember.profilePictureSnapshot"
+                ng-click="editedMember.profilePictureSnapshot = undefined">Clear and Retake</button>
+      </section>
+
+    </div>
+    <div class="form-group">
+      <label for="address" translate>address</label>
+      <textarea rows="4" name="address" ng-model="editedMember.address" class="form-control"></textarea>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="submit" ng-click="save()">Save</button>
+    <button class="btn btn-default" ng-click="close()">Close</button>
+  </div>
+</form>

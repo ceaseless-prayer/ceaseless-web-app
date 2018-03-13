@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <h1 ng-show="!showForgotPassword">Sign in</h1>
+  <h1 ng-show="showForgotPassword">Forgotten password</h1>
+</div>
+
+<form ng-show="!showForgotPassword" role="form" name="signinForm">
+  <div class="modal-body">
+    <show-alerts></show-alerts>
+    <div class="form-group">
+      <label>Email or username</label>
+      <input type="text" autocorrect="off" autocapitalize="off" class="form-control" id="emailOrUsername" ng-model="signin.name" tabindex=1/>
+    </div>
+    <div class="form-group">
+      <label>Password (<a ng-click="showForgotPassword = true">forgot password</a>)</label>
+      <input type="password" class="form-control" id="password" ng-model="signin.password" tabindex=2/>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" ng-click="submit()" class="btn btn-primary" translate>submit</button>
+    <button class="btn btn-default" ng-click="$close()" translate>close</button>
+  </div>
+</form>
+
+<form ng-show="showForgotPassword" role="form" name="forgottenPasswordForm">
+  <div class="modal-body">
+    <show-alerts></show-alerts>
+    <div class="form-group">
+      <label>Email or username</label>
+      <input type="text" autocorrect="off" autocapitalize="off" class="form-control" ng-model="forgotPasswordForm.name" tabindex=1/>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="submit" ng-click="forgotPassword()" class="btn btn-primary" translate>submit</button>
+    <button class="btn btn-default" ng-click="$close()" translate>close</button>
+  </div>
+</form>

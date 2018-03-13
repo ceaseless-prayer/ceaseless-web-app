@@ -1,0 +1,86 @@
+<div ng-switch on="editing">
+  <div ng-switch-when="true">
+    <ng-include src="'members/addMemberForm.html'"></ng-include>
+  </div>
+
+  <section ng-switch-default>
+    <div class="modal-header">
+      <img class="img-rounded pull-right profile-picture" ng-src='{{ editedMember | profilePicture }}'/>
+      <h3>{{editedMember.firstName + ' ' + editedMember.lastName}}</h3>
+      <span>{{editedMember.gender}} Suggested in prayer {{editedMember.prayedFor || 0}} times.</span>
+    </div>
+    <div class="modal-body">
+      <div ng-bind-html="editedMember.description"></div>
+      <div class="btn-group">
+        <a ng-show="editedMember.email" class="btn btn-default" role="button" href="mailto:{{editedMember.email}}">
+          <i class="fa fa-envelope-o fa-lg"></i>
+        </a>
+        <span class="btn btn-default" popover-placement="bottom" popover="{{editedMember.phone || 'No phone'}}">
+          <i class="fa fa-mobile fa-lg"></i>
+        </span>
+        <span class="btn btn-default" popover-placement="bottom" popover="{{editedMember.address || 'No address'}}">
+          <i class="fa fa-home fa-lg"></i>
+        </span>
+        <a ng-show="editedMember.facebook" class="btn btn-default" role="button" href="{{editedMember.facebook}}">
+          <i class="fa fa-facebook fa-lg"></i>
+        </a>
+        <button ng-show="editedMember.invited.length === 0" class="btn btn-default" role="button">
+          <i class="fa fa-plus"></i>
+          <span translate>invite</span>
+        </button>
+        <button class="btn" ng-class="{'btn-success': editedMember.justPrayedFor, 'btn-default': !editedMember.justPrayedFor}"
+                role="button" ng-click="prayed(editedMember); editedMember.justPrayedFor = true" ng-disabled='editedMember.justPrayedFor'>
+          <i class="fa fa-fire"></i>
+          <span translate>prayed</span>
+        </button>
+      </div>
+      <button class="btn btn-primary pull-right" ng-click="edit()">Edit</button>
+      <hr/>
+      <div>
+        <form>
+          <div class="input-group">
+            <input type="text" ng-model="newNote.content" placeholder="Add note" class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="addNote()" ng-disabled="savingNote">
+                  <span>Save</span>
+                </button>
+              </span>
+          </div>
+        </form>
+      </div>
+      <div class="list-group">
+        <!-- show the updates related to this person here -->
+        <span class="list-group-item" ng-repeat="note in notes">
+          <p class="list-group-item-text">{{note.content}}</p>
+          <!-- TODO fetch author of the note -->
+          <span class="small">{{note.timestamp | fromNow}}</span>
+          <div ng-hide="confirmDelete" class="btn-group btn-group-xs">
+            <button type="button" class="btn btn-default">Edit</button>
+            <button type="button" ng-click="confirmDelete = true" class="btn btn-default">Delete</button>
+          </div>
+          <div ng-show="confirmDelete" class="btn-group btn-group-xs">
+            <button type="button" class="btn btn-danger" ng-click="deleteNote(note.id)">Confirm Delete</button>
+            <button type="button" ng-click="confirmDelete = false" class="btn btn-default">Cancel</button>
+          </div>
+        </span>
+        <span class="list-group-item" ng-show="notes.length === 0">no notes yet</span>
+      </div>
+    </div>
+    <div class="modal-footer" ng-show="!confirmDeletion">
+      <div class="pull-left alert alert-success ib-inline-alert" ng-show="success">
+        <strong>Success!</strong> Your changes were saved.
+      </div>
+      <div class="pull-left alert alert-danger ib-inline-alert" ng-show="error">
+        <strong>Warning!</strong> Your changes could not be saved.
+      </div>
+      <button class="btn btn-primary" ng-click="edit()">Edit</button>
+      <button class="btn btn-danger" ng-click="confirmDeletion = true">Delete</button>
+      <button class="btn btn-default" ng-click="close()">Close</button>
+    </div>
+    <div class="modal-footer" ng-show="confirmDeletion">
+      Are you sure you want to delete this?
+      <button class="btn btn-danger" ng-click="delete()">Yes, delete</button>
+      <button class="btn btn-default" ng-click="confirmDeletion = false">Cancel</button>
+    </div>
+  </section>
+</div>

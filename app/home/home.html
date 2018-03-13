@@ -1,0 +1,57 @@
+<div class="jumbotron scape-background">
+  <!--<blockquote>"Pray without ceasing"-->
+    <!--<small>Paul, Apostle to the Gentiles</small></blockquote>-->
+  <div class="container">
+    <div class="row signup-details">
+      <div class="col-xs-18 col-md-6">
+        <h2 class="lead">
+          <img src="home/images/praying_hands_small.png" alt="Pray without ceasing!"><br/>
+          <p translate>pray without ceasing</p>
+          <p class="small">Ceaseless helps leaders remember to pray for the people under their care.</p>
+        </h2>
+      </div>
+      <div class="col-xs-18 col-md-6">
+        <p translate>get a daily email with 3 friends to pray for</p>
+        <show-alerts></show-alerts>
+        <form name="signupForm" class="signup-form" role="form" autocomplete="off" novalidate="true">
+          <div class="form-group" ng-class="{'has-error': signupForm.email.$invalid}">
+            <label class="sr-only" translate>email</label>
+            <input type="email" class="form-control" name="email" ng-model="signup.email" placeholder="Your email"/>
+            <span class="help-block alert-danger" ng-show="signupForm.email.$invalid">Email is invalid or already in use.</span>
+          </div>
+          <div class="form-group" ng-class="{'has-error': signupForm.username.$invalid}">
+            <label class="sr-only">Username</label>
+            <input type="text" class="form-control" name="username" ng-model="signup.name" placeholder="Choose a username"/>
+            <span class="help-block alert-danger" ng-show="signupForm.username.$invalid">Username is invalid or already in use.</span>
+          </div>
+          <div class="form-group" ng-class="{'has-error': signupForm.password.$invalid}">
+            <label class="sr-only">Password</label>
+            <input type="password" class="form-control" name="password" ng-model="signup.password" ng-minlength="7" ng-pattern="/^.*(?=.*\d)(?=.*[a-zA-Z]).*$/" placeholder="Create a password"/>
+            <span class="help-block alert-danger" ng-show="signupForm.password.$invalid">Password is too short (minimum is 7 characters) and requires at least one number.</span>
+          </div>
+        </form>
+        <p><button class="btn btn-lg btn-success" ng-click="registerUser()">Let's start!</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row marketing">
+  <h4>For Individuals</h4>
+  <p>
+  Experience the joy of praying for others and participate in a
+  global campaign to personally pray for every person on earth.
+  </p>
+
+  <h4>For Missionaries</h4>
+  <p>
+  Securely share prayer requests with your supporters and remember to pray for them.
+  </p>
+
+  <h4>For Churches</h4>
+  <p>Encourage the spiritual vitality of your congregation by helping them remember to pray for one another and for the people your church serves.</p>
+
+  <h4>For Ministries</h4>
+  <p>Engage a global movement of praying people in the aspect of God's mission that you are advancing.</p>
+</div>
+

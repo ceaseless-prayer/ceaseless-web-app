@@ -1,0 +1,48 @@
+<div class="modal-header">
+  <h3>Add Intercessor</h3>
+</div>
+<form role="form" name="addIntercessorForm">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="firstName" translate>first name</label>
+      <input type="text" name="firstName" ng-model="newIntercessor.firstName" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="lastName" translate>last name</label>
+      <input type="text" name="lastName" ng-model="newIntercessor.lastName" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="description" translate>description</label>
+      <input type="text" name="description" ng-model="newIntercessor.description" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="email" translate>email</label>
+      <input type="email" name="email" ng-model="newIntercessor.email" class="form-control"/>
+      <span class="error" ng-show="addIntercessorForm.email.$error.required">Required!</span>
+      <span class="error" ng-show="addIntercessorForm.email.$error.email">Not valid email!</span>
+    </div>
+    <div class="form-group">
+      <label for="phone" translate>phone</label>
+      <input type="text" name="phone" ng-model="newIntercessor.phone" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="gender" translate>gender</label>
+      <div class="form-control">
+        <label class="radio-inline">
+          <input type="radio" ng-model="newIntercessor.gender" value="Male"/>Male
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-model="newIntercessor.gender" value="Female"/>Female
+        </label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="profilePicture" translate>profile picture</label>
+      <input class="form-control" type="text" name="profilePicture" ng-model="newIntercessor.profilePicture">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="submit" ng-click="ok()">Save</button>
+    <button class="btn btn-default" ng-click="cancel()">Close</button>
+  </div>
+</form>

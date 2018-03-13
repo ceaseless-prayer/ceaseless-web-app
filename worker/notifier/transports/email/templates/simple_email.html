@@ -1,0 +1,48 @@
+<template name="simple_email">
+	<img src="http://www.ceaselessprayer.com/assets/img/ceaseless.png"/>
+	<hr style="background-color:#ccc; border:0; height: 1px; margin-bottom:1.625em"/>
+	<blockquote style="font-family:Arial, Helvetica, sans-serif; letter-spacing:1px">
+    {{#if scripture.text}}
+      {{scripture.text}} {{scripture.citation}}
+    {{else}}
+      Trust in the Lord with all your heart and lean not on your own understanding (Proverbs 3:5)
+    {{/if}}
+  </blockquote>
+	<h3>{{title}}</h3>
+	<table style="width:100%; border-collapse:collapse">
+		{{#each members}}
+			<tr>
+        <th style="text-align:left; border-top: 1px solid #ccc; margin-top: 3px; font-size:1.7em" colspan="2">
+          {{this.firstName}} {{this.lastName}}
+        </th>
+      </tr>
+			<tr>
+				<td style="vertical-align:top; width:100px">
+          {{#if this.profilePicture}}
+					<img src="{{this.profilePicture}}" style="vertical-align:top; min-width:30px; margin: 3px;"/>
+          {{else}}
+          <img src="http://www.ceaselessprayer.com/assets/img/default_profile_pic.jpg" style="vertical-align:top; min-width:30px; margin: 3px;"/>
+          {{/if}}
+				</td>
+				<td style="max-width:470px; vertical-align:top">
+					<ul style="margin:0; padding-left: 2em">
+            <li>
+              {{#if this.lastNote}}
+                {{this.lastNote}}
+              {{else}}
+                There are no notes associated with this member.
+              {{/if}}
+            </li>
+
+					</ul>
+				</td>
+			</tr>
+		{{/each}}
+		<tr>
+			<td colspan='2' style='border-top: 1px solid #ccc; margin-bottom: 5px'>
+        <a href='http://wwww.ceaselessprayer.com/preferences.html'>Change preferences</a>&nbsp;&middot;&nbsp;
+        <a href='http://www.ceaselessprayer.com/invite.html'>Invite others</a>
+			</td>
+		</tr>
+	</table>
+</template>

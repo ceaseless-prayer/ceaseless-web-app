@@ -1,0 +1,185 @@
+<blockquote>
+  {{scripture}} {{citation}}
+</blockquote>
+<div ng-show="prayedToday">
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url=""
+     data-text="{{scripture + ' ' + citation}}">Tweet</a>
+  <script>!function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (!d.getElementById(id)) {
+      js = d.createElement(s);
+      js.id = id;
+      js.src = "https://platform.twitter.com/widgets.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }
+  }(document, "script", "twitter-wjs");</script>
+</div>
+<hr/>
+<div ng-show="prayedToday">
+  <h3>People who recently prayed for you:</h3>
+
+  <div class="row">
+    <div class="col-xs-4 col-md-3 intercessor-info" ng-repeat="friend in prayedForYou">
+      <img class="img-thumbnail intercessor-image" ng-src="{{friend.img || 'members/images/default_profile_pic.jpg'}}"/>
+
+      <div class="caption">
+        {{friend.name}}
+      </div>
+    </div>
+  </div>
+  <hr/>
+</div>
+
+<div ng-show="prayedToday">
+  <h3>Suggested friends to reach out to:</h3>
+
+  <div ng-repeat="friend in friends">
+    <div class="panel panel-default">
+
+      <div class="panel-heading" ng-class="{prayedFor: prayedFor}">
+          <span class="prayedForDate">
+            Prayed for {{ friend.prayedForDate | fromNow }}
+          </span>
+
+        <div class="checkbox checkbox-success">
+          <input type="checkbox" id="{{'checkbox' + $index}}" ng-model="prayedFor"/>
+          <label for="{{'checkbox' + $index}}">
+            {{friend.name}}
+          </label>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="friend-info">
+          <table>
+            <tr>
+              <td class="friend-image">
+                <img class="img-thumbnail" ng-src="{{friend.img || 'members/images/default_profile_pic.jpg'}}"/>
+              </td>
+              <td>
+                <div class="btn-group">
+                  <a class="btn btn-default" role="button" href="mailto:{{friend.contactInfo.email}}">
+                    <i class="fa fa-envelope-o fa-lg"></i>
+                  </a>
+                  <a class="btn btn-default" role="button" href="mailto:{{friend.contactInfo.email}}">
+                    <i class="fa fa-facebook fa-lg"></i>
+                    <span>{{friend.contactInfo.facebook}}</span>
+                  </a>
+                  <a class="btn btn-default" role="button" href="mailto:{{friend.contactInfo.email}}">
+                    <i class="fa fa-twitter fa-lg"></i>
+                    <span>{{friend.contactInfo.twitter}}</span>
+                  </a>
+                  <a class="btn btn-default" role="button" href="mailto:{{friend.contactInfo.email}}">
+                    <i class="fa fa-linkedin fa-lg"></i>
+                    <span>{{friend.contactInfo.linkedin}}</span>
+                  </a>
+                  <a class="btn btn-default" role="button" href="mailto:{{friend.contactInfo.email}}">
+                    <i class="fa fa-weibo fa-lg"></i>
+                    <span>{{friend.contactInfo.weibo}}</span>
+                  </a>
+                  <a class="btn btn-default" role="button" href="mailto:{{friend.contactInfo.email}}">
+                    <i class="fa fa-renren fa-lg"></i>
+                    <span>{{friend.contactInfo.renren}}</span>
+                  </a>
+                  <a class="btn btn-default" role="button" href="mailto:{{friend.contactInfo.email}}">
+                    <i class="fa fa-wechat fa-lg"></i>
+                    <span>{{friend.contactInfo.wechat}}</span>
+                  </a>
+                  <span class="btn btn-default">
+                    <i class="fa fa-mobile fa-lg"></i>
+                    <span>{{friend.contactInfo.mobile}}</span>
+                  </span>
+                  <button class="btn btn-default" role="button">
+                    <i class="fa fa-plus"></i>
+                    <span>Invite</span>
+                  </button>
+                </div>
+                <ul>
+                  <li ng-repeat="status in friend.statuses">
+                    {{status}}
+                  </li>
+                  <li>
+                    Sources of information:
+                    Show recent updates from them if they use Ceaseless,
+                    Show notes you as the user have recently taken about this person,
+                    Show notes others in your prayer team have recently taken about this person,
+                    Show updates from social networks,
+                    Show suggested ways to pray,
+                  </li>
+                  <li ng-show="friend.statuses.length === 0">
+                    {{noStatusMessage}}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div>
+        <form>
+          <div class="input-group">
+            <input type="text" ng-model="friend.newNote" placeholder="Add note" class="form-control">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="savedNote = true" ng-disabled="savedNote">
+                  <span ng-hide="savedNote">Save</span>
+                  <span us-spinner="{length: 4, width: 2, radius: 5}" ng-show="savedNote">&nbsp;</span>
+                </button>
+              </span>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div ng-show="!prayedToday">
+  <h3>Suggested people to pray for:</h3>
+
+  <p ng-hide="validToken" class="alert alert-danger">{{reauthorizationMessage}}</p>
+  <p>Suggested way to pray: {{suggestedWayToPray}}</p>
+  <div ng-repeat="friend in friends">
+    <div class="panel panel-default">
+
+      <div class="panel-heading" ng-class="{prayedFor: prayedFor}">
+          <span class="prayedForDate">
+            Prayed for {{ friend.prayedForDate | fromNow }}
+          </span>
+
+        <div class="checkbox checkbox-success">
+          <input type="checkbox" id="{{'checkbox' + $index}}" ng-model="prayedFor"/>
+          <label for="{{'checkbox' + $index}}">
+            {{friend.name}}
+          </label>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="friend-info">
+          <table>
+            <tr>
+              <td class="friend-image"><img class="img-thumbnail"
+                                            ng-src="{{friend.img || 'members/images/default_profile_pic.jpg'}}"/></td>
+              <td>
+                <ul>
+                  <li ng-repeat="status in friend.statuses">
+                    {{status}}
+                  </li>
+                  <li ng-show="friend.statuses.length === 0">
+                    {{noStatusMessage}}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr/>
+  <div class="row">
+    <button ng-click="prayed()" class="center-block btn btn-lg btn-success">I Prayed Today!</button>
+    <br/>
+  </div>
+</div>

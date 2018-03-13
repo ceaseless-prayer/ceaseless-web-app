@@ -1,0 +1,53 @@
+<form role="form" name="changeSettings">
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="firstName" translate>first name</label>
+      <input type="text" name="firstName" ng-model="user.firstName" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="lastName" translate>last name</label>
+      <input type="text" name="lastName" ng-model="user.lastName" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="email" translate>email</label>
+      <input type="email" name="email" ng-model="user.email" class="form-control"/>
+    </div>
+    <!-- TODO change password -->
+    <div class="form-group">
+      <label for="description" translate>description</label>
+      <input type="text" name="description" ng-model="user.description" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="profilePicture" translate>profile picture</label>
+
+      <input class="form-control" type="text" name="profilePicture" ng-model="user.profilePicture">
+
+      <section ng-show="hasWebcamPermission">
+        <p>Or</p>
+        <div>
+          <webcam ng-show="!user.profilePictureSnapshot"
+                  on-streaming="onStreamingPermission(video)">
+          </webcam>
+
+          <img ng-src="{{ user.profilePictureSnapshot }}" ng-show="user.profilePictureSnapshot"></img>
+        </div>
+
+        <button class="btn"
+                ng-show="!user.profilePictureSnapshot"
+                ng-click="takeSnapshot()">Take Picture</button>
+
+        <button class="btn"
+                ng-show="user.profilePictureSnapshot"
+                ng-click="user.profilePictureSnapshot = undefined">Clear and Retake</button>
+      </section>
+      <section ng-hide="hasWebcamPermission">
+        <p>Or</p>
+        <input type="file" selected-file="profilePicture" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
+      </section>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="submit" ng-click="save(profilePicture)">Save</button>
+    <button class="btn btn-default" ng-click="close()">Close</button>
+  </div>
+</form>

@@ -1,0 +1,50 @@
+<template name="summer_email">
+  <div style="background-repeat: repeat; width: 100%; height: 100%; background-color: #e6e2ce; padding: 10px; background-image:url(http://www.ceaselessprayer.com/assets/img/ceaseless-background-texture.png); font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;">
+    <div style="max-width:310px; padding: 19px 29px; margin: 10px auto 20px auto; background-color:#fff; border-radius: 5px; box-shadow: 0 1px 2px rgba(0, 0, 0, .05)">
+      <div style="border:none; color: #333333; text-align:center; padding: 0 0 0 15px; margin: 0 0 20px;">
+        <img style="text-align:center;" src="http://www.ceaselessprayer.com/assets/img/ceaseless.png"/>
+        <p style="margin-bottom: 0; font-size: 17.5px; font-weight: 300; line-height: 1.25; margin: 0 0 10px;">&ldquo;
+          {{#if scripture.text}}
+            {{scripture.text}}
+          {{else}}
+            Trust in the Lord with all your heart and lean not on your own understanding.
+          {{/if}}
+          &rdquo;
+        </p>
+        <span style="font-size: 93%; display:block; line-height: 20px; color: #999;">
+          {{#if scripture.citation}}
+            {{scripture.citation}}
+          {{else}}
+            (Proverbs 3:5)
+          {{/if}}
+        </span>
+      </div>
+      <hr style="background-color:#ccc; border:0; height: 1px; margin-bottom:1.625em"/>
+      <h3>{{title}}</h3>
+      <table style="width:100%; border-collapse: collapse">
+        {{#each memberRows}}
+          <tr>
+            {{#each this}}
+              <td style="vertical-align:top; width:90px">
+                {{#if this.profilePicture}}
+                <img src="{{this.profilePicture}}" style="vertical-align:top; min-width:30px; margin: 3px;"/>
+                {{else}}
+                <img src="http://www.ceaselessprayer.com/assets/img/default_profile_pic.jpg" style="vertical-align:top; min-width:30px; margin: 3px;"/>
+                {{/if}}
+                <br/>
+                {{this.firstName}} {{this.lastName}}
+              </td>
+            {{/each}}
+          </tr>
+        {{/each}}
+      </table>
+      <div style="text-align: center">
+        <a href="http://www.ceaselessprayer.com" style="text-decoration: none; display: inline-block; padding: 6px 12px; margin-bottom: 0; font-size: 14px; font-weight: 400; line-height: 1.42857143; text-align: center; white-space: nowrap; vertical-align: middle; cursor: pointer; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; background-image: none; border: 1px solid transparent; border-radius: 4px; color: #fff; background-color: #5cb85c; border-color: #4cae4c;">
+          View Prayer Notes (Coming Soon).
+        </a>
+      </div>
+      <hr style="background-color:#ccc; border:0; height: 1px; margin-bottom:1.625em"/>
+      <a style="color: #80b2b2" href="mailto:ceaseless@theotech.org">Give feedback</a>
+    </div>
+  </div>
+</template>
